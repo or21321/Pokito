@@ -52,9 +52,8 @@ function _update(todo) {
 
 function getEmptyTodo() {
     return {
-        _id: '',
-        name: '',
-        price: 100
+        _id: utilService.makeId(),
+        txt: ''
     }
 }
 

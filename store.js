@@ -1,4 +1,5 @@
 // import { productService } from "./services/product.service.js"
+import { todoService } from "./services/todo-service.js"
 
 const options = {
     strict: true,
@@ -7,6 +8,8 @@ const options = {
         // user: { fullName: 'Baba', balance: 20 },
         // products: productService.query(),
         // cartProducts: []
+        boards: todoService.query(),
+        selectedBoardIdx: 0
     },
     getters: {
         // cartTotal(state) {
@@ -20,8 +23,18 @@ const options = {
         //     // return otherGetters.cartTotal
         //     return state.count.toLocaleString()
         // }
+        boardForDisplay(state) { 
+            return state.boards[state.selectedBoardIdx]
+            // return state.boards[state.selectedBoardIdx]
+        }
     },
     mutations: {
+        addTodoToList(state, payload) {   
+            console.log('addTodoToList() payload:', payload);
+            const {listIdx, todo} = payload
+            console.log(state.boards[state.selectedBoardIdx].lists[listIdx].todos.push(todo)); 
+            // state.boards[state.selectedBoardIdx].lists[listIdx].push(todo)
+        }   
         // updateCount(state, payload) {
         //     console.log('Payload', payload);
         //     state.count += payload.val;

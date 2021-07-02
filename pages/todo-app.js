@@ -7,13 +7,13 @@ export default {
         <router-view></router-view>
         <div class="board-nav-container">
             <h2>Board</h2>            
-            <h2>{{boards[selectedBoardIdx].boardName}}</h2>
+            <h2>{{board.boardName}}</h2>
         </div>
         <!-- <todo-list v-for="todo in todos" :todo="todo" :key="todo._id">
             <todo-preview></todo-preview>
         </todo-list> -->
         <div class="board-lists">
-            <todo-list v-for="list in boards[0].lists" :list="list"></todo-list>
+            <todo-list @addTodo="addTodo" v-for="(list, idx) in board.lists" :list="list" :listIdx="idx"></todo-list>
         </div>
     </section>
     `,
@@ -25,8 +25,22 @@ export default {
     },
     data() {
         return {
-            boards: todoService.query(),
-            selectedBoardIdx: 0,
+            // boards: todoService.query(),
+            // selectedBoardIdx: 0,
         }
     },
+    computed: { 
+        board() {
+            // return this.$store.state.boards
+            return this.$store.getters.boardForDisplay
+        }
+    },
+    methods: {  
+        addTodo(listIdx) {  
+            console.log('addTodo(), listIdx', listIdx);
+            const todoToEdit = todoService.getEmptyTodo()
+            console.log('todoToEdit:', todoToEdit);
+            // this.$store.commit({type: 'addTodo', })
+        }
+    }
 }
