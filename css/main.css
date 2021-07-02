@@ -1,0 +1,262 @@
+@font-face {
+    font-family: Roboto-Regular;
+    src: url('../fonts/Roboto-Regular.ttf');
+}
+
+@font-face {
+    font-family: Segoe-UI-Bold;
+    src: url('../fonts/Segoe\ UI\ Bold.ttf');
+}
+
+@font-face {
+    font-family: Segoe-UI;
+    src: url('../fonts/Segoe\ UI.ttf');
+}
+
+/* @font-face {
+    font-family: Product-Sans-Regular;
+    src: url('../fonts/Product-Sans-Regular.ttf');
+}
+@font-face {
+    font-family: Gatafa-Regular;
+    src: url('../fonts/Gafata-Regular.ttf');
+} */
+
+/* Base */
+
+html {
+    height: 100%;
+    /* font-family: Roboto-Regular; */
+    font-family: Segoe-ui;
+    font-size: 14px;
+    color: #172b4d;
+    line-height: 20px;
+}
+
+body {
+    height: 100%;
+    margin: 0;
+}
+
+h1, h2, h3, h4, h5, p {
+    margin: 0;
+}
+
+ul {
+    padding: 0;
+}
+
+button {
+    border: 0px;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+/* button:hover {
+    cursor: pointer;
+} */
+
+.app {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background-image: url('../img/mountains-stars-2.jpg');
+    /* background-image: url('../img/moutains-stars.jpg'); */
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.app-main {
+    flex-grow: 1;
+    /* background-color: lightyellow; */
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    gap: 25px;
+}
+
+.app-main h2 {
+    margin-top: 25px;
+    font-family: Segoe-UI-Bold;
+    /* font-size: 30px; */
+}
+
+/* Header */
+
+.app-header {
+    background-color: #273240b0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #95959b;
+}
+
+.logo {
+    font-family: Segoe-UI-Bold;
+    /* padding-left: 50px; */
+    /* padding: 10px 0 10px 50px; */
+    font-size: 1.5rem;
+    letter-spacing: .8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3.5px;
+}
+
+.logo span {
+    font-size: 1.5rem;
+    padding-top: 3px;
+}
+
+/* nav {    */
+
+/* margin-inline-end: 50px; */
+
+/* display: flex; */
+
+/* gap: 1.5rem; */
+
+/* } */
+
+nav {
+    display: flex;
+    gap: 0;
+}
+
+.nav-icon {
+    font-size: 20.5px;
+    background-color: rgba(255, 255, 255, 0.3);
+    width: fit-content;
+    padding: 6px;
+    border-radius: 3px;
+    margin: 4px 4px 4px 0;
+    color: rgb(255, 255, 255);
+}
+
+.nav-icon:hover {
+    background-color: rgba(85, 84, 84, 0.774)
+}
+
+.nav-icon:first-child {
+    margin-left: 4px;
+}
+
+.header-features span {
+    padding: 6px;
+    font-size: 20.5px;
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 3px;
+    margin: 4px 4px 4px 0;
+    /* color: rgb(255, 255, 255); */
+    color: #d9dadc;
+}
+
+.header-features span:hover {
+    background-color: rgba(85, 84, 84, 0.774);
+    cursor: pointer;
+}
+
+/* Footer */
+
+.app-footer {
+    /* background-color: lightblue; */
+    padding: 10px 0;
+    text-align: center;
+}
+
+/* Home-page */
+
+.home-page {
+    font-size: 1.5rem;
+    font-family: Segoe-UI-Bold;
+}
+
+.home-page p {
+    font-size: 1.75rem;
+}
+
+/* Todo-list */
+
+.todo-list {
+    display: flex;
+    flex-direction: column;
+    color: #4b5a74;
+    background-color: #ebecf0;
+    border-radius: 3px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: center;
+    width: 272px;
+    height: fit-content;
+}
+
+.todo-list h4 {
+    align-self: flex-start;
+    padding: 10px 0 5px 5px;
+    margin-left: 12px;
+    font-size: 14px;
+}
+
+.todo-compose-btn { 
+    width: 89%;
+    align-self: baseline;
+    display: flex;
+    justify-content: baseline;
+    align-items: center;
+    margin-bottom: 8px;
+    margin-left: 12px;
+    color: #5e6c84;
+    border-radius: 3px;
+}
+
+.todo-compose-btn:hover {   
+    cursor: pointer;
+    background-color: rgb(216, 216, 216);
+}
+
+/* Todo-preview */
+.todo-preview {
+    font-size: 14px;
+    padding: 6px 8px 6px;
+    color: #4b5a74;
+    text-decoration: none;
+    background-color: #ffffff;
+    width: 89%;
+    border-radius: 3px;
+}
+
+/* Todo-app */
+.todo-app { 
+    margin-left: 8px;
+}
+
+.board-lists {
+    display: flex;
+    gap: 8px;
+}
+
+.board-nav-container {
+    display: flex;
+    gap: 8px;
+}
+
+.board-nav-container>* {
+    padding: 5px;
+    background-color: hsla(0, 0%, 100%, .24);
+    font-size: 14px;
+    color: #ffffff;
+    border-radius: 3px;
+}
+
+.board-nav-container :last-child {
+    font-family: Segoe-UI-Bold;
+    font-size: 18px;
+}
+.board-nav-container :first-child {
+    font-family: Segoe-UI;
+    font-size: 14px;
+}
+
