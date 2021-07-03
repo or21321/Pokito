@@ -192,10 +192,10 @@ nav {
     background-color: rgb(216, 216, 216);
 }
 
-
 /* Todo-preview */
 
 .todo-preview {
+    position: relative;
     font-size: 14px;
     padding: 6px 8px 6px;
     color: #4b5a74;
@@ -203,6 +203,30 @@ nav {
     background-color: #ffffff;
     width: 89%;
     border-radius: 3px;
+    box-shadow: 0 1px 0 rgb(9 30 66 / 25%);
+}
+
+.todo-preview:hover {
+    background-color: #f0f0f3;
+}
+
+.delete-preview-btn {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    opacity: 0;
+    transition: opacity .15s;
+    padding: 7px;
+    font-size: 11px;
+    border-radius: 3px;
+}
+
+.todo-preview:hover .delete-preview-btn {
+    opacity: 1;
+}
+
+.delete-preview-btn:hover {
+    background-color: #d8d8dd77;
 }
 
 /* Todo-app */
@@ -297,7 +321,8 @@ nav {
 }
 
 /* List-compose */
-.list-compose textarea {    
+
+.list-compose textarea {
     font-size: 14px;
     padding: 6px 8px 6px;
     color: #4b5a74;
@@ -320,11 +345,11 @@ nav {
     height: 28px;
 }
 
-.list-compose .compose-features {   
+.list-compose .compose-features {
     display: flex;
 }
 
-.list-compose .compose-features :first-child {  
+.list-compose .compose-features :first-child {
     margin: 2px 0 7px 0;
 }
 
@@ -340,18 +365,18 @@ nav {
     gap: 8px;
     align-items: center;
     width: 272px;
-    height: fit-content;    
+    height: fit-content;
     background-color: rgba(233, 230, 230, 0.24);
     color: #ffffff;
     transition: color 85ms ease-in;
 }
 
-.list-add-btn:hover {   
+.list-add-btn:hover {
     cursor: pointer;
     background-color: rgba(255, 255, 255, 0.246);
 }
 
-.list-add-btn span {    
+.list-add-btn span {
     font-size: 18px;
 }
 
@@ -369,7 +394,7 @@ nav {
     gap: 5px;
 }
 
-.list-compose-container {   
+.list-compose-container {
     margin-top: 14px;
     display: flex;
     flex-direction: column;
@@ -381,7 +406,7 @@ nav {
     gap: 8px;
     align-items: center;
     width: 272px;
-    height: fit-content;    
+    height: fit-content;
     color: #ffffff;
     /* transition: color 85ms ease-in; */
 }
@@ -398,6 +423,7 @@ nav {
     border-top-left-radius: 3px;
     border-top-right-radius: 3px;
     padding: 10px;
+    z-index: 1;
 }
 
 .todo-details-header textarea {

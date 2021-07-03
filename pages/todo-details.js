@@ -16,6 +16,9 @@ export default {
         // this.$store.commit({type:'setTodoForDisplay', })
         this.loadTodo(this.todoId)
     },
+    destroyed() {   
+        this.saveTodoTxt()
+    },
     data() {
         return {
             todo: null
@@ -28,9 +31,14 @@ export default {
     },
     methods: {
         loadTodo(id) {
-            this.todo = todoService.getById(id)
-            console.log('this.todo', this.todo);
+            const {todo, listIdx} = todoService.getById(id)
+            this.todo = todo
+            this.listIdx = listIdx
             // this.$store.getters.getTodoForDisplay
+        },
+        saveTodoTxt() { 
+            console.log('saveTodoTxt()');
+            this.$store.commit({type: 'editTodoTxt', todoId: this.todo._id, listIdx: this.listIdx, todo: this.todo})
         }
     },
     // watch: {

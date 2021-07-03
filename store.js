@@ -25,7 +25,7 @@ const options = {
         //     // return otherGetters.cartTotal
         //     return state.count.toLocaleString()
         // }
-        boardForDisplay(state) { 
+        boardForDisplay(state) {
             return state.boards[state.selectedBoardIdx]
             // return state.boards[state.selectedBoardIdx]
         },
@@ -35,15 +35,29 @@ const options = {
         // }
     },
     mutations: {
-        addTodoToList(state, payload) {   
+        addTodoToList(state, payload) {
             console.log('addTodoToList() payload:', payload);
-            const {listIdx, todo} = payload
-           state.boards[state.selectedBoardIdx].lists[listIdx].todos.push(todo); 
+            const { listIdx, todo } = payload
+            state.boards[state.selectedBoardIdx].lists[listIdx].todos.push(todo);
             // state.boards[state.selectedBoardIdx].lists[listIdx].push(todo)
         },
-        addList(state, payload) {   
+        addList(state, payload) {
             console.log('from store addList payload', payload);
-            state.boards[state.selectedBoardIdx].lists.push({listName: payload.listName, todos: []})
+            state.boards[state.selectedBoardIdx].lists.push({ listName: payload.listName, todos: [] })
+        },
+        removeTodo(state, { todoId, listIdx }) {
+            console.log(todoId);
+            const todoIdx = state.boards[state.selectedBoardIdx].lists[listIdx].todos.findIndex(todo => todo._id === todoId)
+            console.log('todoIdx', todoIdx);
+            console.log('listIdx', listIdx);
+            if (todoIdx !== -1) state.boards[state.selectedBoardIdx].lists[listIdx].todos.splice(todoIdx, 1)
+        },
+        editTodoTxt(state, {todoId, listIdx, todo}) { 
+            console.log('todoId', todoId);
+            console.log('listIdx', listIdx);
+            const todoIdx = state.boards[state.selectedBoardIdx].lists[listIdx].todos.findIndex(todo => todo._id === todoId)
+            console.log('todoIdx', todoIdx);
+            state.boards[state.selectedBoardIdx].lists[listIdx].todos.splice(todoIdx, 1, todo)
         }
         // setTodoForDisplay(state, payload) {
         //     console.log('setTodoDetailsInfo() payload', payload);
@@ -53,7 +67,7 @@ const options = {
         //     state.count += payload.val;
         //     state.user.balance++;
         // },
-        
+
         // addToCart(state, payload) {
         //     state.cartProducts.push(payload.product)
         // },

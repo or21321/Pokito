@@ -23,11 +23,13 @@ function query() {
 function getById(id) {
     console.log('gTodos', gTodos);
     let todo = null
+    let listIdx = -1
     gTodos[0].lists.forEach(list => {
         if (todo) return
+        listIdx ++
         todo = list.todos.find(todo => todo._id === id)
     })
-    return todo
+    return {todo, listIdx}
 }
 
 function remove(id) {

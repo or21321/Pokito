@@ -7,7 +7,7 @@ export default {
     <ul class="todo-list">
         <h4>{{list.listName}}</h4>
         <todo-preview v-for="todo in list.todos" :key="todo._id"
-         :todo="todo" @remove="removeTodo" @edit="editTodo" />
+         :todo="todo" :listIdx="listIdx" @remove="removeTodo" @edit="editTodo" />
          <todo-compose v-if="isTodoComposeOn" :listIdx="listIdx" @closeCompose="isTodoComposeOn=false"/>
          <div v-else @click="addTodo" class="todo-compose-btn">
              <span class="material-icons">add</span> Add a card
