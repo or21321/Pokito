@@ -9,7 +9,9 @@ const options = {
         // products: productService.query(),
         // cartProducts: []
         boards: todoService.query(),
-        selectedBoardIdx: 0
+        selectedBoardIdx: 0,
+        listIdxForDisplay: null,
+        todoIdForDisplay: null,
     },
     getters: {
         // cartTotal(state) {
@@ -26,7 +28,11 @@ const options = {
         boardForDisplay(state) { 
             return state.boards[state.selectedBoardIdx]
             // return state.boards[state.selectedBoardIdx]
-        }
+        },
+        // ? What about that positioning ?
+        // todoForDisplay(state) { 
+        //     return state.boards[state.selectedBoardIdx].lists[listIdxForDisplay].todos.find(todo => todo._id === state.todoIdForDisplay)
+        // }
     },
     mutations: {
         addTodoToList(state, payload) {   
@@ -34,7 +40,10 @@ const options = {
             const {listIdx, todo} = payload
             console.log(state.boards[state.selectedBoardIdx].lists[listIdx].todos.push(todo)); 
             // state.boards[state.selectedBoardIdx].lists[listIdx].push(todo)
-        }   
+        },
+        // setTodoForDisplay(state, payload) {
+        //     console.log('setTodoDetailsInfo() payload', payload);
+        // }
         // updateCount(state, payload) {
         //     console.log('Payload', payload);
         //     state.count += payload.val;

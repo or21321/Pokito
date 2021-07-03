@@ -21,7 +21,7 @@ export default {
         todoList
     },
     created() {
-        console.log('todo-app created!', this.boards);
+        console.log('todo-app created!', this.board);
     },
     data() {
         return {

@@ -21,7 +21,13 @@ function query() {
 }
 
 function getById(id) {
-    return gTodos.find(todo => todo._id === id)
+    console.log('gTodos', gTodos);
+    let todo = null
+    gTodos[0].lists.forEach(list => {
+        if (todo) return
+        todo = list.todos.find(todo => todo._id === id)
+    })
+    return todo
 }
 
 function remove(id) {
@@ -72,20 +78,20 @@ function _createTodos() {
                                 _createTodo('Show unread emails count on top'), _createTodo('Go through pdf to make sure you got everything done')
                             ]
                     },
-                    {   
+                    {
                         listName: 'Doing',
                         todos:
-                        [
-                            _createTodo('Make pixel-perfect email-compose'), _createTodo('Make pixel-perfect email-compose button'),
-                        ]
+                            [
+                                _createTodo('Make pixel-perfect email-compose'), _createTodo('Make pixel-perfect email-compose button'),
+                            ]
                     },
-                    {   
+                    {
                         listName: 'Done',
-                        todos: 
-                        [   
-                            _createTodo('Create user-msg component with success / error msgs'), _createTodo('Sort emails by date / title'),
-                            _createTodo('make search filter by subject & read or unread'), _createTodo('edit email-features to work onclick, and add the additional features you need to work with them.'),
-                        ]
+                        todos:
+                            [
+                                _createTodo('Create user-msg component with success / error msgs'), _createTodo('Sort emails by date / title'),
+                                _createTodo('make search filter by subject & read or unread'), _createTodo('edit email-features to work onclick, and add the additional features you need to work with them.'),
+                            ]
                     }
                 ]
             }

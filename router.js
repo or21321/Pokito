@@ -10,17 +10,17 @@ const routes = [
     {
         path: '/todo-app',
         component: todoApp,
-        // children: [
-        //     {
-        //         path:'list',
-        //         component: todoList
-        //     }
-        // ]
+        children: [
+            //     {
+            //         path:'list',
+            //         component: todoList
+            //     }
+            {
+                path: '/todo-app/:todoId',
+                component: todoDetails
+            }
+        ]
     },
-    {   
-        path: '/todo-app/:todoId',
-        component: todoDetails
-    }
 ];
 
 Vue.use(VueRouter);

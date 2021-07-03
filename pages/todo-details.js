@@ -3,31 +3,40 @@ import { todoService } from "../services/todo-service.js";
 export default {
     template: `
     <section v-if="todo" class='todo-details app-main'>
-        <!-- <h2>{{}}</h2> -->
-        <p>{{todo.txt}}</p>
+        <div class="todo-details-header">
+            <span class="material-icons">web</span><textarea v-model="todo.txt" id="" cols="20" rows="2"></textarea>
+            <router-link to="/todo-app">X</router-link>
+        </div>
+        <!-- <p>{{todo.txt}}</p> -->
+        <!-- <p>{{todo.txt}}</p> -->
     </section>
     `,
     created() {
         console.log('todo-details created!');
+        // this.$store.commit({type:'setTodoForDisplay', })
+        this.loadTodo(this.todoId)
     },
     data() {
         return {
             todo: null
         }
     },
-    methods: {
-        loadTodo() {
-            const id = this.$route.params.todoId
-            todoService.getById(id)
-                .then(todo => {
-                    this.todo = todo
-                })
+    computed: {
+        todoId() {
+            return this.$route.params.todoId
         }
     },
-    watch: {
-        '$route.params.todoId'(id) {
-            console.log('Changed to', id);
-            this.loadBug();
+    methods: {
+        loadTodo(id) {
+            this.todo = todoService.getById(id)
+            console.log('this.todo', this.todo);
+            // this.$store.getters.getTodoForDisplay
         }
-    }
+    },
+    // watch: {
+    //     '$route.params.todoId'(id) {
+    //         console.log('Changed to', id);
+    //         this.loadBug();
+    //     }
+    // }
 }

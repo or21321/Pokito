@@ -16,19 +16,23 @@ export default {
     data() {
         return {
             todoToEdit: todoService.getEmptyTodo()
+            // todoToEdit: todoService.getById(this.todoId, this.listIdx) || todoService.getEmptyTodo()
         }
     },
     created() {
         console.log('todo-compose created!');
     },
+    computed: {
+    },
     methods: {
         add() {
             console.log('add()', this.todoToEdit);
-            this.$store.commit({type: 'addTodoToList', todo: this.todoToEdit, listIdx: this.listIdx})
+            this.$store.commit({ type: 'addTodoToList', todo: this.todoToEdit, listIdx: this.listIdx })
             this.$emit('closeCompose')
         },
         cancel() {
             console.log('cancel()');
+            this.$emit('closeCompose')
         }
     }
 }
