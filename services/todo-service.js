@@ -12,7 +12,7 @@ export const todoService = {
 }
 
 // This is like the backend
-var gTodos = _createTodos()
+var gTodos = storageService.load(KEY) || _createTodos()
 
 // TODO: support paging and filtering and sorting
 function query() {

@@ -38,9 +38,13 @@ const options = {
         addTodoToList(state, payload) {   
             console.log('addTodoToList() payload:', payload);
             const {listIdx, todo} = payload
-            console.log(state.boards[state.selectedBoardIdx].lists[listIdx].todos.push(todo)); 
+           state.boards[state.selectedBoardIdx].lists[listIdx].todos.push(todo); 
             // state.boards[state.selectedBoardIdx].lists[listIdx].push(todo)
         },
+        addList(state, payload) {   
+            console.log('from store addList payload', payload);
+            state.boards[state.selectedBoardIdx].lists.push({listName: payload.listName, todos: []})
+        }
         // setTodoForDisplay(state, payload) {
         //     console.log('setTodoDetailsInfo() payload', payload);
         // }

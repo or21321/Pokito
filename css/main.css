@@ -143,7 +143,12 @@ nav {
     color: rgb(200, 200, 200);
 }
 
+.home-page h2 {
+    margin-top: 25px;
+}
+
 .home-page p {
+    margin-top: 25px;
     font-size: 20px;
 }
 
@@ -186,6 +191,7 @@ nav {
     cursor: pointer;
     background-color: rgb(216, 216, 216);
 }
+
 
 /* Todo-preview */
 
@@ -252,6 +258,7 @@ nav {
     height: 54px;
     font-size: 14px;
     letter-spacing: -1px;
+    font-family: Segoe-UI;
 }
 
 .todo-compose {
@@ -289,13 +296,103 @@ nav {
     color: rgb(105, 105, 105);
 }
 
+/* List-compose */
+.list-compose textarea {    
+    font-size: 14px;
+    padding: 6px 8px 6px;
+    color: #4b5a74;
+    text-decoration: none;
+    width: 89%;
+    border-radius: 3px;
+    border: 0px;
+    outline: none;
+    border-radius: 3px;
+    background-color: #ffffff;
+    overflow: hidden;
+    overflow-wrap: break-word;
+    resize: none;
+    /* height: 54px; */
+    font-size: 14px;
+    letter-spacing: -1px;
+    font-family: Segoe-UI;
+    margin-top: 6.5px;
+    padding: 6.5px;
+    height: 28px;
+}
+
+.list-compose .compose-features {   
+    display: flex;
+}
+
+.list-compose .compose-features :first-child {  
+    margin: 2px 0 7px 0;
+}
+
+.list-add-btn {
+    margin-top: 14px;
+    display: flex;
+    flex-direction: column;
+    /* color: #4b5a74; */
+    /* background-color: #ebecf0; */
+    border-radius: 3px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: center;
+    width: 272px;
+    height: fit-content;    
+    background-color: rgba(233, 230, 230, 0.24);
+    color: #ffffff;
+    transition: color 85ms ease-in;
+}
+
+.list-add-btn:hover {   
+    cursor: pointer;
+    background-color: rgba(255, 255, 255, 0.246);
+}
+
+.list-add-btn span {    
+    font-size: 18px;
+}
+
+.list-add-btn h4 {
+    /* padding: 10px 0 5px 5px;
+    align-self: flex-start; */
+    align-self: flex-start;
+    /* padding: 10px 0 5px 5px; */
+    padding: 12.5px 0 7.5px 5px;
+    margin-left: 12px;
+    font-size: 14px;
+    font-weight: 400;
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+}
+
+.list-compose-container {   
+    margin-top: 14px;
+    display: flex;
+    flex-direction: column;
+    /* color: #4b5a74; */
+    background-color: #ebecf0;
+    border-radius: 3px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: center;
+    width: 272px;
+    height: fit-content;    
+    color: #ffffff;
+    /* transition: color 85ms ease-in; */
+}
+
 /* Todo-details */
 
 .todo-details {
     position: absolute;
     background-color: #f4f5f7;
-    height: 95%;
-    width: 770px;
+    height: 92.5%;
+    width: 760px;
     bottom: 0;
     right: 62.25vh;
     border-top-left-radius: 3px;
@@ -314,7 +411,7 @@ nav {
     font-weight: 600;
     font-size: 18px;
     color: #172b4d;
-    padding: 5px;
+    padding: 10px 5px 5px 5px;
 }
 
 .todo-details-header {
@@ -326,15 +423,15 @@ nav {
 }
 
 .todo-details-header span {
-    margin-left: 7.5px;
-    margin-top: 5px;
+    margin-left: 8.5px;
+    margin-top: 6px;
     margin-right: 7px;
 }
 
 .todo-details a {
     position: absolute;
-    top: 5.5px;
-    right: 5.5px;
+    top: 4px;
+    right: 4px;
     text-decoration: none;
     font-size: 20px;
     padding: 12px;
