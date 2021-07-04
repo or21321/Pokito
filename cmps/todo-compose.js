@@ -1,4 +1,4 @@
-import { todoService } from "../services/todo-service.js";
+import { boardService } from "../services/board-service.js";
 
 export default {
     props: ['todoId', 'listIdx'],
@@ -15,8 +15,7 @@ export default {
     `,
     data() {
         return {
-            todoToEdit: todoService.getEmptyTodo()
-            // todoToEdit: todoService.getById(this.todoId, this.listIdx) || todoService.getEmptyTodo()
+            todoToEdit: boardService.getEmptyTodo()
         }
     },
     created() {
@@ -27,7 +26,7 @@ export default {
     methods: {
         add() {
             console.log('add()', this.todoToEdit);
-            this.$store.commit({ type: 'addTodoToList', todo: this.todoToEdit, listIdx: this.listIdx })
+            this.$store.dispatch({ type: 'addTodoToList', todo: this.todoToEdit, listIdx: this.listIdx })
             this.$emit('closeCompose')
         },
         cancel() {

@@ -9,12 +9,13 @@ export default {
         </router-link>
     `,
     created() {
-        console.log('todo-preview created!', this.todo);
+        // console.log('todo-preview created!', this.todo);
     },
     methods: {
         remove() {
             console.log('remove() from preview');
-            this.$store.commit({type: 'removeTodo', todoId: this.todo._id, listIdx: this.listIdx})
+        this.$store.dispatch({type: 'removeTodo', todoId: this.todo._id, listIdx: this.listIdx})
+            // this.$store.commit({type: 'removeTodo', todoId: this.todo._id, listIdx: this.listIdx})
         },
         edit() {
             console.log('edit() from preview');

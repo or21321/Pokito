@@ -1,4 +1,4 @@
-import { todoService } from "../services/todo-service.js";
+import { boardService } from "../services/board-service.js";
 
 export default {
     template: `
@@ -14,7 +14,7 @@ export default {
     created() {
         console.log('todo-details created!');
         // this.$store.commit({type:'setTodoForDisplay', })
-        this.loadTodo(this.todoId)
+        this.loadTodo()
     },
     destroyed() {   
         this.saveTodoTxt()
@@ -27,11 +27,14 @@ export default {
     computed: {
         todoId() {
             return this.$route.params.todoId
+        },
+        todo() {    
+            return this.$store.getters.todoForDisplay
         }
     },
     methods: {
-        loadTodo(id) {
-            const {todo, listIdx} = todoService.getById(id)
+        loadTodo() {
+            const {todo, listIdx} = this.$store.dispatch({type: 'loadTodoForDisplay', todoId: this.todoId})
             this.todo = todo
             this.listIdx = listIdx
             // this.$store.getters.getTodoForDisplay

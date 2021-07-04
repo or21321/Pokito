@@ -1,4 +1,4 @@
-import { todoService } from "../services/todo-service.js";
+import { boardService } from "../services/board-service.js";
 
 export default {
     // props: ['todoId', 'listIdx'],

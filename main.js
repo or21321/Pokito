@@ -1,6 +1,6 @@
 
 import {myRouter} from './router.js'
-import {myStore} from './store.js'
+import {myStore} from './store/store.js'
 import appHeader from './cmps/app-header.js'
 import appFooter from './cmps/app-footer.js'
 

@@ -19,8 +19,8 @@ export default {
         todoCompose
     },
     created() {
-        console.log('todo-list created! list:', this.list);
-        console.log('todo-list created! listIdx:', this.listIdx);
+        // console.log('todo-list created! list:', this.list);
+        // console.log('todo-list created! listIdx:', this.listIdx);
     },
     data() {
         return {
