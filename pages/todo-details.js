@@ -5,7 +5,7 @@ export default {
     <section v-if="todo" class='todo-details app-main'>
         <div class="todo-details-header">
             <span class="material-icons">web</span><textarea v-model="todoCopy.txt" id="" cols="20" rows="2"></textarea>
-            <router-link to="/todo-app">X</router-link>
+            <router-link class="close-btn" to="/todo-app">X</router-link>
         </div>
     </section>
     `,

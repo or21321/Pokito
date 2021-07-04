@@ -1,6 +1,7 @@
 import todoList from "../cmps/todo-list.js";
 import { boardService } from "../services/board-service.js";
 import listCompose from "../cmps/list-compose.js";
+import userProfile from "../cmps/user-profile.js";
 
 export default {
     template: `
@@ -21,16 +22,19 @@ export default {
                 <h4 ><span class='material-icons'>add</span>Add another list</h4>
             </div>
         </div>
+        <user-profile v-if="isUserProfileOn">
+        </user-profile>
     </section>
     `,
     components: {
         todoList,
-        listCompose
+        listCompose,
+        userProfile
     },
     created() {
         this.$store.dispatch({ type: 'loadBoards' })
     },
-    mounted() { 
+    mounted() {
         console.log('todo-app mounted!');
     },
     data() {
@@ -42,22 +46,25 @@ export default {
         board() {
             return this.$store.getters.boardForDisplay
         },
-        filteredBoard() {   
+        filteredBoard() {
             if (!this.filterBy) return this.board
-            const filteredLists = this.board.lists.map(list => {   
+            const filteredLists = this.board.lists.map(list => {
                 const filteredTodos = list.todos.filter(todo => todo.txt.toLowerCase().includes(this.filterBy.txt.toLowerCase()))
                 console.log('list', list);
                 console.log('filteredTodos', filteredTodos);
                 console.log('filterBy', this.filterBy);
-                console.log({listName: list.listName, todos: filteredTodos});
-                return {listName: list.listName, todos: filteredTodos}
+                console.log({ listName: list.listName, todos: filteredTodos });
+                return { listName: list.listName, todos: filteredTodos }
             })
             console.log('filteredLists', filteredLists);
-            return {boardName: this.board.boardName, lists: filteredLists}
+            return { boardName: this.board.boardName, lists: filteredLists }
         },
-        filterBy() {    
+        filterBy() {
             console.log('filterBy()', this.$store.getters.filterBy);
             return this.$store.getters.filterBy
+        },
+        isUserProfileOn() {
+            return this.$store.getters.isUserProfileOn
         }
     },
     methods: {

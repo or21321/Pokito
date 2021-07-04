@@ -10,11 +10,11 @@ export const todoStore = {
     },
     getters: {
         // boardForDisplay(state) {
-            // console.log('boardForDisplay', state.boards[state.selectedBoardIdx].lists);
-            // const filteredBoard = state.boards[state.selectedBoardIdx].lists.map(list => {  
-            //     return list.todos.filter(todo => todo.txt.toLowerCase().includes(state.filterBy.txt).toLowerCase())
-            // })
-            // return filteredBoard
+        // console.log('boardForDisplay', state.boards[state.selectedBoardIdx].lists);
+        // const filteredBoard = state.boards[state.selectedBoardIdx].lists.map(list => {  
+        //     return list.todos.filter(todo => todo.txt.toLowerCase().includes(state.filterBy.txt).toLowerCase())
+        // })
+        // return filteredBoard
         // },
         boardForDisplay(state) {
             // console.log('boardForDisplay', state.boards[state.selectedBoardIdx]);
@@ -23,7 +23,7 @@ export const todoStore = {
         todoForDisplay(state) {
             return state.todoForDisplay
         },
-        filterBy(state) {   
+        filterBy(state) {
             return state.filterBy
         }
     },
@@ -47,39 +47,39 @@ export const todoStore = {
             const todoIdx = state.boards[state.selectedBoardIdx].lists[listIdx].todos.findIndex(todo => todo._id === todoId)
             console.log('todoIdx', todoIdx);
             console.log('listIdx', listIdx);
-            if (todoIdx !== -1) {   
+            if (todoIdx !== -1) {
                 state.boards[state.selectedBoardIdx].lists[listIdx].todos.splice(todoIdx, 1)
                 return Promise.resolve()
             }
-            
+
         },
-            setTodoForDisplay(state, { todo, listIdx }) {
-                console.log('setTodoForDisplayIdxs()', todo, listIdx);
-                state.todoForDisplay = todo
-                state.currDisplayedTodoListIdx = listIdx
-            },
-            editTodoTxt(state, {todoIdx, todo}) {   
-                console.log('editTodoTxt', todoIdx, todo);
-                state.boards[state.selectedBoardIdx].lists[state.currDisplayedTodoListIdx].todos.splice(todoIdx, 1, todo)
-            },
-            setFilter(state, {filterBy}) { 
-                console.log('filterBy', filterBy);
-                state.filterBy = filterBy
-            }
+        setTodoForDisplay(state, { todo, listIdx }) {
+            console.log('setTodoForDisplayIdxs()', todo, listIdx);
+            state.todoForDisplay = todo
+            state.currDisplayedTodoListIdx = listIdx
         },
-        actions: {
+        editTodoTxt(state, { todoIdx, todo }) {
+            console.log('editTodoTxt', todoIdx, todo);
+            state.boards[state.selectedBoardIdx].lists[state.currDisplayedTodoListIdx].todos.splice(todoIdx, 1, todo)
+        },
+        setFilter(state, { filterBy }) {
+            console.log('filterBy', filterBy);
+            state.filterBy = filterBy
+        }
+    },
+    actions: {
         editTodoTxt(context, { todoId, todo }) {
             console.log('todoId', todoId);
             console.log('todo', todo);
             const todoIdx = context.state.boards[context.state.selectedBoardIdx].lists[context.state.currDisplayedTodoListIdx].todos.findIndex(todo => todo._id === todoId)
-           
-            
-            context.commit( {type: 'editTodoTxt', todoIdx, todo})
+
+
+            context.commit({ type: 'editTodoTxt', todoIdx, todo })
             boardService.save(context.state.boards)
-            .then((boards) => {
-                console.log('after save', boards);
-            })
-            
+                .then((boards) => {
+                    console.log('after save', boards);
+                })
+
         },
         loadBoards(context) {
             return boardService.query()
@@ -96,7 +96,7 @@ export const todoStore = {
             // context.commit({type: 'saveBoard'})
             context.commit(payload)
             boardService.save(context.state.boards)
-            .then((boards) => {
+                .then((boards) => {
                     console.log('after save', boards);
                 })
         },
@@ -131,7 +131,7 @@ export const todoStore = {
                     return Promise.resolve(payload.listName)
                 })
         },
-        setFilter(context, payload) {    
+        setFilter(context, payload) {
             console.log('payload.filterBy', payload.filterBy);
             context.commit(payload)
         }

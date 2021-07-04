@@ -16,7 +16,7 @@ export default {
            <span class="material-icons">space_dashboard</span> Pokito
         </div>
         <div class="header-features">
-            <span class="material-icons">add</span>
+            <span @click="toggleUserProfile" class="material-icons">add</span>
             <!-- <router-link to="/">Home</router-link>
             <router-link to="/todo-app">Todos-app</router-link> --> 
             <!-- <router-link></router-link> -->
@@ -44,6 +44,9 @@ export default {
         filter() {
             console.log('FILTER', this.filterBy);
             this.$store.dispatch({ type: 'setFilter', filterBy: JSON.parse(JSON.stringify(this.filterBy)) })
+        },
+        toggleUserProfile() {
+            this.$store.dispatch({type: 'toggleUserProfileModal'})
         }
     }
 }
