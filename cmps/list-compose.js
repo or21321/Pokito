@@ -29,7 +29,8 @@ export default {
     methods: {
         add() {
             console.log('add()', this.todoToEdit);
-            this.$store.commit({ type: 'addList', listName: this.listToCompose.listName })
+            // this.$store.commit({ type: 'addList', listName: this.listToCompose.listName })
+            this.$store.dispatch({ type: 'addList', listName: this.listToCompose.listName })
             this.$emit('closeListCompose')
         },
         cancel() {

@@ -5,7 +5,7 @@ const KEY = 'boards';
 
 export const boardService = {
     query,
-    getById,
+    // getById,
     // remove,
     save,
     getEmptyTodo
@@ -22,6 +22,7 @@ function query() {
     console.log('query()');
     return storageService.query(KEY)
         .then(boards => {
+            console.log(boards);
             return boards;
         })
 }
@@ -35,17 +36,21 @@ function query() {
 //         })
 // }
 
-function getById(id, selectedBoardIdx) {
+// function getById(id, selectedBoardIdx) {
     // console.log('gBoards', gBoards);
-    let todo = null
-    let listIdx = -1
-    query()[selectedBoardIdx].lists.forEach(list => {
-        if (todo) return
-        listIdx++
-        todo = list.todos.find(todo => todo._id === id)
-    })
-    return { todo, listIdx }
-}
+//     let todo = null
+//     let listIdx = -1
+//     query()
+//         .then(boards => {
+//             boards[selectedBoardIdx].lists.forEach(list => {
+//                 if (todo) return
+//                 listIdx++
+//                 todo = list.todos.find(todo => todo._id === id)
+//             })
+//         })
+
+//     return { todo, listIdx }
+// }
 
 // function remove(id) {
 //     const idx = gTodos.findIndex(todo => todo._id === id)
@@ -92,7 +97,8 @@ function getEmptyTodo() {
 function _createBoard() {
     storageService.query(KEY)
         .then(boards => {
-            const boardsListsTodos = boards[0].lists.some(list => { 
+            console.log('boards', boards);
+            const boardsListsTodos = boards[0].lists.some(list => {
                 return list.todos.length > 0
             })
             if (!boards || !boardsListsTodos) {
