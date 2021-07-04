@@ -13,7 +13,8 @@ export default {
     },
     methods: {
         remove() {
-            console.log('remove() from preview');
+
+
         this.$store.dispatch({type: 'removeTodo', todoId: this.todo._id, listIdx: this.listIdx})
             // this.$store.commit({type: 'removeTodo', todoId: this.todo._id, listIdx: this.listIdx})
         },

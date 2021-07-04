@@ -5,9 +5,17 @@ export const todoStore = {
         boards: [],
         selectedBoardIdx: 0,
         todoForDisplay: null,
-        currDisplayedTodoListIdx: null
+        currDisplayedTodoListIdx: null,
+        filterBy: ''
     },
     getters: {
+        // boardForDisplay(state) {
+            // console.log('boardForDisplay', state.boards[state.selectedBoardIdx].lists);
+            // const filteredBoard = state.boards[state.selectedBoardIdx].lists.map(list => {  
+            //     return list.todos.filter(todo => todo.txt.toLowerCase().includes(state.filterBy.txt).toLowerCase())
+            // })
+            // return filteredBoard
+        // },
         boardForDisplay(state) {
             // console.log('boardForDisplay', state.boards[state.selectedBoardIdx]);
             return state.boards[state.selectedBoardIdx]
@@ -15,6 +23,9 @@ export const todoStore = {
         todoForDisplay(state) {
             return state.todoForDisplay
         },
+        filterBy(state) {   
+            return state.filterBy
+        }
     },
     mutations: {
         setBoards(state, { boards }) {
@@ -38,20 +49,18 @@ export const todoStore = {
             console.log('listIdx', listIdx);
             if (todoIdx !== -1) state.boards[state.selectedBoardIdx].lists[listIdx].todos.splice(todoIdx, 1)
         },
-        // saveBoard(state) {   
-            //     console.log('saveBoard()');
-            //     boardService.save(state.boards)
-            // }
             setTodoForDisplay(state, { todo, listIdx }) {
                 console.log('setTodoForDisplayIdxs()', todo, listIdx);
                 state.todoForDisplay = todo
                 state.currDisplayedTodoListIdx = listIdx
-                
-                // state.todoForDisplay = {todo: todo, listIdx: listIdx}
             },
             editTodoTxt(state, {todoIdx, todo}) {   
                 console.log('editTodoTxt', todoIdx, todo);
                 state.boards[state.selectedBoardIdx].lists[state.currDisplayedTodoListIdx].todos.splice(todoIdx, 1, todo)
+            },
+            setFilter(state, {filterBy}) { 
+                console.log('filterBy', filterBy);
+                state.filterBy = filterBy
             }
         },
         actions: {
@@ -60,19 +69,17 @@ export const todoStore = {
             console.log('todo', todo);
             const todoIdx = context.state.boards[context.state.selectedBoardIdx].lists[context.state.currDisplayedTodoListIdx].todos.findIndex(todo => todo._id === todoId)
            
+            
             context.commit( {type: 'editTodoTxt', todoIdx, todo})
-
             boardService.save(context.state.boards)
             .then((boards) => {
                 console.log('after save', boards);
             })
+            
         },
         loadBoards(context) {
-            // console.log('loadBoards()');
-            // console.log('Context', context);
             return boardService.query()
                 .then(boards => {
-                    // console.log('boards', boards);
                     context.commit({ type: 'setBoards', boards: boards })
                     return boards;
                 })
@@ -82,10 +89,10 @@ export const todoStore = {
                 })
         },
         removeTodo(context, payload) {
-            context.commit(payload)
             // context.commit({type: 'saveBoard'})
+            context.commit(payload)
             boardService.save(context.state.boards)
-                .then((boards) => {
+            .then((boards) => {
                     console.log('after save', boards);
                 })
         },
@@ -118,5 +125,9 @@ export const todoStore = {
                     console.log('after save', boards);
                 })
         },
+        setFilter(context, payload) {    
+            console.log('payload.filterBy', payload.filterBy);
+            context.commit(payload)
+        }
     },
 }

@@ -22,7 +22,7 @@ function query() {
     console.log('query()');
     return storageService.query(KEY)
         .then(boards => {
-            console.log(boards);
+            // console.log(boards);
             return boards;
         })
 }

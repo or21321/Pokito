@@ -8,10 +8,10 @@ export default {
         <router-view></router-view>
         <div class="board-nav-container">
             <h2>Board</h2>            
-            <h2>{{board.boardName}}</h2>
+            <h2>{{filteredBoard.boardName}}</h2>
         </div>
         <div class="board-lists">
-            <todo-list @addTodo="addTodo" v-for="(list, idx) in board.lists" :list="list" :listIdx="idx"></todo-list>
+            <todo-list @addTodo="addTodo" v-for="(list, idx) in filteredBoard.lists" :list="list" :listIdx="idx"></todo-list>
             <div v-if="isListComposeOn" class="list-compose-container">
                 <list-compose @closeListCompose="isListComposeOn=false" 
                 class="list-compose">
@@ -41,6 +41,23 @@ export default {
     computed: {
         board() {
             return this.$store.getters.boardForDisplay
+        },
+        filteredBoard() {   
+            if (!this.filterBy) return this.board
+            const filteredLists = this.board.lists.map(list => {   
+                const filteredTodos = list.todos.filter(todo => todo.txt.toLowerCase().includes(this.filterBy.txt.toLowerCase()))
+                console.log('list', list);
+                console.log('filteredTodos', filteredTodos);
+                console.log('filterBy', this.filterBy);
+                console.log({listName: list.listName, todos: filteredTodos});
+                return {listName: list.listName, todos: filteredTodos}
+            })
+            console.log('filteredLists', filteredLists);
+            return {boardName: this.board.boardName, lists: filteredLists}
+        },
+        filterBy() {    
+            console.log('filterBy()', this.$store.getters.filterBy);
+            return this.$store.getters.filterBy
         }
     },
     methods: {
@@ -48,7 +65,6 @@ export default {
             console.log('addTodo(), listIdx', listIdx);
             const todoToEdit = boardService.getEmptyTodo()
             console.log('todoToEdit:', todoToEdit);
-            // this.$store.commit({type: 'addTodo', })
         },
         openNewList() {
             console.log('openNewList()');

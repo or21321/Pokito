@@ -44,7 +44,7 @@ export default {
             // this.listIdx = listIdx
         },
         saveTodoTxt() { 
-            console.log('saveTodoTxt()');
+            console.log('saveTodoTxt()')
             this.$store.dispatch({type: 'editTodoTxt', todoId: this.todo._id, todo: this.todoCopy})
         }
     },
