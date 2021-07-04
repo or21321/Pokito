@@ -47,7 +47,11 @@ export const todoStore = {
             const todoIdx = state.boards[state.selectedBoardIdx].lists[listIdx].todos.findIndex(todo => todo._id === todoId)
             console.log('todoIdx', todoIdx);
             console.log('listIdx', listIdx);
-            if (todoIdx !== -1) state.boards[state.selectedBoardIdx].lists[listIdx].todos.splice(todoIdx, 1)
+            if (todoIdx !== -1) {   
+                state.boards[state.selectedBoardIdx].lists[listIdx].todos.splice(todoIdx, 1)
+                return Promise.resolve()
+            }
+            
         },
             setTodoForDisplay(state, { todo, listIdx }) {
                 console.log('setTodoForDisplayIdxs()', todo, listIdx);
@@ -98,9 +102,10 @@ export const todoStore = {
         },
         addTodoToList(context, payload) {
             context.commit(payload)
-            boardService.save(context.state.boards)
+            return boardService.save(context.state.boards)
                 .then((boards) => {
                     console.log('after save', boards);
+                    return Promise.resolve(payload.todo)
                 })
         },
         loadTodoForDisplay(context, { todoId }) {
@@ -123,6 +128,7 @@ export const todoStore = {
             boardService.save(context.state.boards)
                 .then((boards) => {
                     console.log('after save', boards);
+                    return Promise.resolve(payload.listName)
                 })
         },
         setFilter(context, payload) {    

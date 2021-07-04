@@ -483,3 +483,77 @@ nav {
 .todo-details a:hover {
     background-color: rgba(223, 228, 231, 0.774);
 }
+
+/* User-msg */
+.user-msg {
+    position: fixed;
+    bottom: 22.5px;
+    left: 22.5px;
+    padding: 5px 20px 5px 10px;
+    ;
+    z-index: 1;
+    background-color: #202124;
+    /* background-color: #e7e2e2; */
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    /* background-color: #ffffff; */
+}
+
+.user-msg span.msg-icon {
+    padding-right: 10px;
+}
+
+.user-msg span:not(.msg-icon) {
+    padding-left: 10px;
+}
+
+/* .user-msg.success h4 {
+    color: #dadadb; */
+
+/* color: rgb(37, 206, 37); */
+
+/* } */
+
+/* .user-msg.error h4 {
+    color: red;
+} */
+
+.user-msg p {
+    font-size: .875rem;
+    color: #dadadb;
+    /* padding-inline-end: 40px;
+    padding-inline-start: 10px; */
+    padding: 10px 40px 10px 10px;
+}
+
+/* .success { */
+
+/* border: 4px solid rgb(37, 206, 37); */
+
+/* }/ */
+
+/* .error {
+        border: 4px solid red;
+    } */
+
+.user-msg .close-msg {
+    color: #8a8b8c;
+    /* color: #fff; */
+    /* font-size: .45rem; */
+    font-size: 1rem;
+    position: absolute;
+    top: 12px;
+    right: 20px;
+    /* border-radius: 50%; */
+    padding: 3px;
+    border: 0px;
+    background-color: #202124;
+}
+
+.user-msg a {
+    color: #dadadb;
+    background-color: #202124;
+    font-size: .735rem;
+    text-decoration: none;
+}

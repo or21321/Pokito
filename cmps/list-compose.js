@@ -1,4 +1,5 @@
 import { boardService } from "../services/board-service.js";
+import { showMsg } from "../services/event-bus-service.js";
 
 export default {
     // props: ['todoId', 'listIdx'],
@@ -31,6 +32,9 @@ export default {
             console.log('add()', this.todoToEdit);
             // this.$store.commit({ type: 'addList', listName: this.listToCompose.listName })
             this.$store.dispatch({ type: 'addList', listName: this.listToCompose.listName })
+                .then(listName => { 
+                    showMsg(`Added a new list, named: ${listName}`)
+                })
             this.$emit('closeListCompose')
         },
         cancel() {

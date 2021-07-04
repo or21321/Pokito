@@ -1,3 +1,5 @@
+import { showMsg } from "../services/event-bus-service.js";
+
 export default {
     props: ['todo', 'listIdx'],
     template: `
@@ -13,10 +15,10 @@ export default {
     },
     methods: {
         remove() {
-
-
         this.$store.dispatch({type: 'removeTodo', todoId: this.todo._id, listIdx: this.listIdx})
-            // this.$store.commit({type: 'removeTodo', todoId: this.todo._id, listIdx: this.listIdx})
+            .then(() => {   
+                showMsg('Todo removed successfully')
+            })
         },
         edit() {
             console.log('edit() from preview');

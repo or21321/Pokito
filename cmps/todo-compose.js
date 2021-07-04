@@ -1,4 +1,5 @@
 import { boardService } from "../services/board-service.js";
+import { showMsg } from "../services/event-bus-service.js";
 
 export default {
     props: ['todoId', 'listIdx'],
@@ -27,6 +28,9 @@ export default {
         add() {
             console.log('add()', this.todoToEdit);
             this.$store.dispatch({ type: 'addTodoToList', todo: this.todoToEdit, listIdx: this.listIdx })
+                .then(todo => { 
+                    showMsg('Added a todo successfully', 'success', `/todo-app/${todo._id}`)
+                })
             this.$emit('closeCompose')
         },
         cancel() {

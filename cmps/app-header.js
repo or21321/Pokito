@@ -1,3 +1,5 @@
+import { debounce } from "../services/util.service.js"
+
 export default {
     template: `
     <section class="app-header">
@@ -23,10 +25,14 @@ export default {
     `,
     data() {
         return {
-            filterBy: { 
+            filterBy: {
                 txt: null
             }
         }
+    },
+    created() {
+        console.log(debounce)
+        this.filter = debounce(this.filter, 1000)
     },
     methods: {
         toHomepage() {
@@ -35,9 +41,9 @@ export default {
         toTodoApp() {
             this.$router.push('/todo-app')
         },
-        filter() {  
-                console.log('FILTER', this.filterBy);
-                this.$store.dispatch({type: 'setFilter', filterBy: JSON.parse(JSON.stringify(this.filterBy))})
+        filter() {
+            console.log('FILTER', this.filterBy);
+            this.$store.dispatch({ type: 'setFilter', filterBy: JSON.parse(JSON.stringify(this.filterBy)) })
         }
     }
 }
