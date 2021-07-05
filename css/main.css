@@ -141,6 +141,10 @@ nav {
     display: flex;
 }
 
+.header-features .avatar:hover {    
+    cursor: pointer;
+}
+
 .header-features .avatar img {  
     margin-right: 5px;
 }
@@ -583,7 +587,8 @@ nav {
     height: 92.5%;
     width: 760px;
     bottom: 0;
-    right: 62.25vh;
+    right: 50px;
+    /* right: 62.25vh; */
     border-top-left-radius: 3px;
     border-top-right-radius: 3px;
     padding: 10px;
@@ -595,8 +600,10 @@ nav {
 
 .user-profile textarea {
     border-radius: 3px;
-    border: 0px;
-    background-color: #f4f5f7ad;
+    /* border: 0px; */
+    /* background-color: #f4f5f7d3; */
+    /* background-color: #f4f5f7ad; */
+    background-color: #ffffff0e;
     outline: none;
     /* background-color: #f4f5f7; */
     flex-grow: .9;

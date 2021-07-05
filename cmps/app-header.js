@@ -19,7 +19,7 @@ export default {
         <div class="header-features">
             <span @click="toggleUserProfile" class="material-icons">add</span>
 
-            <div v-if="loggedinUser" class="avatar">
+            <div v-if="loggedinUser" class="avatar" @click="toggleUserProfile">
                 <img :src="avatarUrl">
             </div>
         </div> 
