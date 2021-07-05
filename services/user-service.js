@@ -3,7 +3,7 @@ import { utilService } from "./util.service.js"
 
 export const userService = {
     query,
-
+    save
 }
 
 const KEY = 'users'
@@ -34,4 +34,8 @@ function _createUsers() {
 
 function _createUser(name, clr = 'black', bcg = '#ffffff') {
     return { name, clr, bcg, _id: utilService.makeId() }
+}
+
+function save(user) {
+    return storageService.putUser(KEY, user)
 }

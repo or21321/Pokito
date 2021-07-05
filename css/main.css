@@ -131,6 +131,21 @@ nav {
     font-family: Segoe-UI;
 }
 
+.header-features {  
+    display: flex;
+    justify-content: center;
+    align-items: center ;
+}
+
+.header-features .avatar{  
+    display: flex;
+}
+
+.header-features .avatar img {  
+    margin-right: 5px;
+}
+
+
 .header-features span {
     padding: 6px;
     font-size: 20.5px;
@@ -644,4 +659,15 @@ nav {
 .user-pref:hover .tooltip-text {
     visibility: visible;
     opacity: 1;
+}
+
+/* Avatar */
+.avatar img{
+    border-radius: 50%;
+}
+
+.user-info .avatar img {    
+    position: absolute;
+    top: 5px;
+    left: 5px;
 }

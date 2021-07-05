@@ -1,4 +1,5 @@
 import { debounce } from "../services/util.service.js"
+// import {avatarUrl}
 
 export default {
     template: `
@@ -17,10 +18,12 @@ export default {
         </div>
         <div class="header-features">
             <span @click="toggleUserProfile" class="material-icons">add</span>
-            <!-- <router-link to="/">Home</router-link>
-            <router-link to="/todo-app">Todos-app</router-link> --> 
-            <!-- <router-link></router-link> -->
+
+            <div v-if="loggedinUser" class="avatar">
+                <img :src="avatarUrl">
+            </div>
         </div> 
+        
     </section>
     `,
     data() {
@@ -33,8 +36,20 @@ export default {
     created() {
         console.log(debounce)
         this.filter = debounce(this.filter, 1000)
+        this.loadLoggedinUser()
+    },
+    computed: {
+        loggedinUser() {
+            return this.$store.getters.loggedinUser
+        },
+        avatarUrl() {
+            return this.$store.getters.avatarUrl
+        }
     },
     methods: {
+        loadLoggedinUser() {
+            this.$store.dispatch({ type: 'loadLoggedinUser' })
+        },
         toHomepage() {
             this.$router.push('/')
         },
@@ -46,7 +61,7 @@ export default {
             this.$store.dispatch({ type: 'setFilter', filterBy: JSON.parse(JSON.stringify(this.filterBy)) })
         },
         toggleUserProfile() {
-            this.$store.dispatch({type: 'toggleUserProfileModal'})
-        }
+            this.$store.dispatch({ type: 'toggleUserProfileModal' })
+        },
     }
 }
